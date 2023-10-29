@@ -1,17 +1,28 @@
 
 name: Docker
 
-on:
+ @@ -1,10 +1,12 @@
+
+name: Docker
+  on:
+ @@ -1,13 +1,17 @@ 
+    schedule:
+      - cron: '25 12 * * *'
+    push: dependabot/pip/wheel-0.38.1
+on: 
+ @@ -15,6 +16,7 @@ on:
   schedule:
     - cron: '25 12 * * *'
-  push:
+  push: dependabot/pip/wheel-0.38.1
     branches: [ master ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
-  pull_request:
+    pull_request:
+    @@ -15,6 +17,7 @@ on:
     branches: [ master ]
 
 env:
+@@ -21,16 +25,42 @@ jobs:
   REGISTRY: ghcr.io
   IMAGE_NAME: eugeny/tabby-connection-gateway
 
@@ -22,16 +33,42 @@ jobs:
       contents: read
       packages: write
 
-    steps:
+steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       # https://github.com/docker/setup-qemu-action
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       # https://github.com/docker/setup-buildx-action
-      - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v1
+      - name: Docker Setup Buildx
+      # You may pin to the exact commit or the version.
+      # uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226
+        uses: docker/setup-buildx-action@v3.0.0
+        with:
+          # Buildx version. (eg. v0.3.0)
+          version: # optional
+          # Sets the builder driver to be used
+          driver: # optional, default is docker-container
+          # List of additional driver-specific options. (eg. image=moby/buildkit:master)
+          driver-opts: # optional
+          # Flags for buildkitd daemon
+          buildkitd-flags: # optional, default is --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+          # Sets up docker build command as an alias to docker buildx build
+          install: # optional, default is false
+          # Switch to this builder instance
+          use: # optional, default is true
+          # Optional address for docker socket or context from `docker context ls`
+          endpoint: # optional
+          # Fixed platforms for current node. If not empty, values take priority over the detected ones
+          platforms: # optional
+          # BuildKit config file
+          config: # optional
+          # Inline BuildKit config
+          config-inline: # optional
+          # Append additional nodes to the builder
+          append: # optional
+          # Cleanup temp files and remove builder at the end of a job
+          cleanup: # optional, default is true
 
       - name: Log into registry ${{ env.REGISTRY }}
         if: github.event_name != 'pull_request'
@@ -52,7 +89,7 @@ jobs:
               type=semver,pattern={{version}}
               type=semver,pattern={{major}}.{{minor}}
               type=semver,pattern={{major}}
-
+              
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
@@ -67,4 +104,4 @@ jobs:
       # You may pin to the exact commit or the version.
       # uses: CircleCI-Public/trigger-circleci-pipeline-action@4c19ba5233222ed6714ecfc27213e548b722301f
         uses: CircleCI-Public/trigger-circleci-pipeline-action@v1.1.0
-       
+        
