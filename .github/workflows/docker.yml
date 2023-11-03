@@ -1,4 +1,3 @@
-
 name: Docker
 
 on:
@@ -65,5 +64,3 @@ jobs:
 
       - name: Deploy Docker
         uses: sidikfaha/deploy-docker@v1.0.1
-            
-            
