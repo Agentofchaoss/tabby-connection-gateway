@@ -28,6 +28,4 @@ jobs:
         npm install
         npx webpack
 
-    - name: Deploy to Cloudflare Pages
-      uses: The-Noah/pages-action@v1.0.2
             
