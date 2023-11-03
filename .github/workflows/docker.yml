@@ -3,7 +3,7 @@ name: Docker
 on: 
   schedule:
     - cron: '25 12 * * *'
-  push: dependabot/pip/wheel-0.38.1
+  push:
   branches: [ master ]
     # Publish semver tags as releases.
   tags: [ 'v*.*.*' ]
@@ -46,15 +46,7 @@ jobs:
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v3
-        with:
-          image: {{ eugeny/tabby-connection-gateway }}
-          tag: |
-          type=schedule
-          type=raw,value=latest,enable=${{ endsWith(github.ref, github.event.repository.default_branch) }}
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=semver,pattern={{major}}
-            
+        
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
@@ -64,9 +56,4 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
-      - name: Trigger CircleCI Pipeline
-      # You may pin to the exact commit or the version.
-      # uses: CircleCI-Public/trigger-circleci-pipeline-action@4c19ba5233222ed6714ecfc27213e548b722301f
-        uses: CircleCI-Public/trigger-circleci-pipeline-action@v1.1.0
-
+          
