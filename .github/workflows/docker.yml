@@ -46,14 +46,14 @@ jobs:
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v3
-         with:
-         image: {{ eugeny/tabby-connection-gateway }}
-         tag: |
-           type=schedule
-           type=raw,value=latest,enable=${{ endsWith(github.ref, github.event.repository.default_branch) }}
-           type=semver,pattern={{version}}
-           type=semver,pattern={{major}}.{{minor}}
-           type=semver,pattern={{major}}
+        with:
+          image: {{ eugeny/tabby-connection-gateway }}
+          tag: |
+          type=schedule
+          type=raw,value=latest,enable=${{ endsWith(github.ref, github.event.repository.default_branch) }}
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=semver,pattern={{major}}
             
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
