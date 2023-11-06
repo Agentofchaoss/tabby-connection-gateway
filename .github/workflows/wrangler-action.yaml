@@ -1,8 +1,9 @@
-name: Deploy
+name: Deploy to CLoudflare Pages
 
 on:
-  push:
-    branches:
+    
+    push:
+     branches:
       - main
       
 jobs:
