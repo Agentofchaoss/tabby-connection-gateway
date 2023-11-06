@@ -6,37 +6,42 @@
 version: 2
 updates:
 
-- package-ecosystem: "python" # See documentation for possible values
-  directory: "/" # Location of package manifests
-  schedule:
-    interval: "weekly"
+  - package-ecosystem: "" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "weekly"
 
-- package-ecosystem: "pip" # See documentation for possible values
-  directory: "/" # Location of package manifests
-  schedule:
-    interval: "daily
+  - package-ecosystem: "python" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "pip" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "daily
     
-- package-ecosystem: "node" # See documentation for possible values
-  directory: "/" # Location of package manifests
-  schedule:
-    interval: "daily
+  - package-ecosystem: "node" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "daily
     
-- package-ecosystem: "docker" # See documentation for possible values
-  directory: "/" # Location of package manifests
-  schedule:
-    interval: "weekly"
+  - package-ecosystem: "docker" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "weekly"
 
-- package-ecosystem: "npm" # See documentation for possible values
-  directory: "/" # Location of package manifests
-  schedule:
-    interval: "daily"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "daily"
 
-- package-ecosystem: "bundler" # See documentation for possible values
-  directory: "/" # Location of package manifests
-  schedule:
-    interval: "weekly"
+  - package-ecosystem: "bundler" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "weekly"
 
-- package-ecosystem: "github-actions" # See documentation for possible values
-  directory: "/" # Location of package manifests
-  schedule:
-    interval: "daily"
+  - package-ecosystem: "github-actions" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "daily"
