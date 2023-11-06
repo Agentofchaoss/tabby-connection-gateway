@@ -1,3 +1,4 @@
+name: Deploy Site
 on: [push]
 
 jobs:
@@ -14,7 +15,7 @@ jobs:
       # Run a build step here if your project requires
       - name: Build
         with:
-          node-version: '20'
+          node-version: 'latest'
       - run: npm build
       - run: npx build
         
