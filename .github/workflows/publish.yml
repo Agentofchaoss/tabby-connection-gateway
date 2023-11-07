@@ -1,4 +1,4 @@
-name: Cloudflare Pages
+name: cloudflare-pages
 on: [push]
 
 jobs:
