@@ -1,4 +1,4 @@
-name: Cloudflare Pages
+name: wrangler-action
 
 on:
     
