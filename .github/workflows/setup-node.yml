@@ -1,7 +1,9 @@
-steps:
-- uses: actions/checkout@v4
-- uses: actions/setup-node@v3
-  with:
-    node-version: 18
-- run: npm ci
-- run: npm test
+on:
+
+  steps:
+   - uses: actions/checkout@v4
+   - uses: actions/setup-node@v3
+     with:
+     node-version: 18
+     run: npm ci
+          npm test
