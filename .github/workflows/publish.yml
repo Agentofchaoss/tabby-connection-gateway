@@ -1,4 +1,4 @@
-on: push
+on: [push]
 
 jobs:
   publish:
@@ -9,32 +9,23 @@ jobs:
     name: Publish to Cloudflare Pages
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       # Run a build step here if your project requires
-      - name: Build
-        with:
-          node-version: 'latest'
-      - run: npm build
-      - run: npx build
-        
+
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: tabby-connection-gateway
-          directory: /build
+          accountId: YOUR_ACCOUNT_ID
+          projectName: YOUR_PROJECT_NAME
+          directory: YOUR_BUILD_OUTPUT_DIRECTORY
           # Optional: Enable this if you want to have GitHub Deployments triggered
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           # Optional: Switch what branch you are publishing to.
           # By default this will be the branch which triggered this workflow
-          branch: master
+          branch: main
           # Optional: Change the working directory
-          workingDirectory: /functions
+          workingDirectory: my-site
           # Optional: Change the Wrangler version, allows you to point to a specific version or a tag such as `beta`
           wranglerVersion: '3'
-          
-      - name: Cache
-        uses: actions/cache@v3.3.2
-            
