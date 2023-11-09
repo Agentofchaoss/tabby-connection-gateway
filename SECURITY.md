@@ -1,9 +1,5 @@
-# Security Policy
+# **Security**
 
-COMING SOON>>> 
+## ***Vulnerability Reports***
 
-## Reporting a Vulnerability
-
-agent0fchaos@onionmail.org
-
-Replies will be sent out in a timely manner. Please be patient, Thank you.
+> Refer to the '/main' branch from which I forked this branch from...
