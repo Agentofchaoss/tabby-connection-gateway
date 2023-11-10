@@ -1,8 +1,9 @@
 on:
+
  deployment:
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v3
+  steps:
+  - uses: actions/checkout@v4
+  - uses: actions/setup-node@v3
     with:
       node-version: latest
       run:
