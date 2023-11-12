@@ -7,5 +7,6 @@ on:
     with:
       node-version: latest
       run:
+      - npm install -g
       - npm ci
       - npm test
