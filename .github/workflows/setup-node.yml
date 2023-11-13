@@ -2,11 +2,10 @@ on:
 
  deployment:
   steps:
-  - uses: actions/checkout@v4
-  - uses: actions/setup-node@v3
+  - name: Setup Node with Cache
+  # You may pin to the exact commit or the version.
+  # uses: usafder/setup-node-with-cache@60ba93452433f71b7e744ff650d3aae05ea0d1c2
+    uses: usafder/setup-node-with-cache@v.1.1.0
     with:
-      node-version: latest
-      run:
-      - npm install -g
-      - npm ci
-      - npm test
+    # Node version to use (optional)
+    NODE_VERSION: # optional
