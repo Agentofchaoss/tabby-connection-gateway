@@ -14,7 +14,7 @@ name: Docker
     branches: [ master ]
 
 env:
-@@ -21,16 +25,42 @@ jobs:
+jobs:
   REGISTRY: ghcr.io
   IMAGE_NAME: eugeny/tabby-connection-gateway
 
@@ -93,3 +93,7 @@ steps:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v5.1.0
+                
