@@ -8,4 +8,4 @@ on:
     uses: usafder/setup-node-with-cache@v.1.1.0
     with:
     # Node version to use (optional)
-    NODE_VERSION: # optional
+    NODE_VERSION: latest # optional
